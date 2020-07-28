@@ -84,3 +84,7 @@
 // install with Library Manager: "MCP41XXX"
 // https://github.com/ArduinoMax/MCP41xxx
 #define USE_MCP41xxx                                0
+
+// install with Library Manager: "IRremote"
+// https://github.com/z3t0/Arduino-IRremote
+#define USE_IRremote                                0
