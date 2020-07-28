@@ -51,6 +51,10 @@
 #include <Adafruit_TLC5947.h>
 #endif
 
+#if USE_IRremote
+#include <IRremote.h>
+#include "IRremoteClass.h"
+#endif
 
 #include "MCP41xxxClass.h"
 #include "BaseClass.h"
@@ -98,6 +102,7 @@ void setup() {
     REGISTER_CLASS_CONDITIONAL(LiquidCrystalClass_I2C, USE_LiquidCrystal_I2C);
     REGISTER_CLASS_CONDITIONAL(OneWireClass, USE_OneWire);                          // 1.7 k
     REGISTER_CLASS_CONDITIONAL(DallasTemperatureClass, USE_DallasTemperature);      // 6.1 k
+
     REGISTER_CLASS_CONDITIONAL(StepperClass, USE_Stepper);                          // 0.8 k
     REGISTER_CLASS_CONDITIONAL(ServoClass, USE_Servo);                              // 2.5 k
     REGISTER_CLASS_CONDITIONAL(ToneClass, USE_Tone);                                // 2.2 k
@@ -119,7 +124,12 @@ void setup() {
     // GW Classes
     REGISTER_CLASS_CONDITIONAL(UltrasonicClass, USE_Ultrasonic);
     REGISTER_CLASS_CONDITIONAL(ColorSensorClass, USE_ColorSensor);
-    
+
+    #if USE_IRremote
+    REGISTER_CLASS(IRsendClass);
+    REGISTER_CLASS(IRrecvClass);
+    #endif
+
     ComChannel::connect();
 }
 
